@@ -1,16 +1,18 @@
 let grid_size_x = 10;
 let grid_size_y = grid_size_x;
-let square_size_height = 50;
-let square_size_width = 50;
+let square_size_height = 40;
+let square_size_width = 40;
 let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
+let num_obstacle = 20;
 
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
+  add_obstacles(num_obstacle);
   grid.addEventListener("wheel", scroll_handler);
 }
 
@@ -39,6 +41,22 @@ function draw_grid(height, width) {
     }
   }
 }
+
+function add_obstacles(num_obstacle) {
+  let added_obstacle = 0;
+  
+  while (added_obstacle < num_obstacle) {
+    let i = Math.floor(Math.random() * grid_size_x);
+    let j = Math.floor(Math.random() * grid_size_y);
+    let node = grid_matrix[i][j];
+    
+    if (!node.classList.contains("start") && !node.classList.contains("end") && !node.classList.contains("obstacle")) {
+      node.classList.add("obstacle");
+      added_obstacle++;
+    }
+  }
+}
+
 
 function square_mouseenter(event) {
   let elem = event.target;
@@ -82,6 +100,7 @@ function draw_path() {
   }
 }
 
+
 function clear_path() {
   for (let elem of document.querySelectorAll(".path")) {
     elem.classList.remove("path");
@@ -120,7 +139,9 @@ function get_neighbors(node) {
     (grid_matrix[i + 1] || [])[j],
     (grid_matrix[i] || [])[j - 1],
   ];
-  return neighbors.filter(neighbor => neighbor !== undefined);
+  
+  return neighbors.filter(neighbor => neighbor !== undefined && !neighbor.classList.contains("obstacle"));
 }
+
 
 init();
