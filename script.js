@@ -1,4 +1,4 @@
-let grid_size_x = 10;
+let grid_size_x = 6;
 let grid_size_y = grid_size_x;
 let square_size_height = 40;
 let square_size_width = 40;
@@ -7,7 +7,7 @@ let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
-let num_obstacle = 23;
+let num_obstacle = 10;
 
 
 function init() {
