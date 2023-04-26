@@ -9,6 +9,7 @@
   --snow:       #F6F1F1;
   --beige:      #FFDB89;
   --light-beige:#FFF6C3;
+  --yellow:     #FCE22A;
   
   --dark-red:   #850000;
   --red:        #DC0000;
@@ -31,10 +32,11 @@ html {
 
 .container {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  top: 20%;
+  left: 5%;
+  height: 80%;
+  width: 80%;
+  background-color: var(--light-blue);
 }
 
 #massive-grid {
@@ -55,13 +57,25 @@ html {
 }
 
 .square.path {
-  background: #7b7bff8a;
+  background: var(--yellow);
 }
 
 .square.highlight {
-  background: #93ff8980;
+  background: var(--dark-brown);
 }
 
 .square.clicked {
-  background: #fab83f80;
+  background: var(--dark-blue1);
+}
+
+.square.start {
+  background-image: url("https://i.pinimg.com/originals/40/9c/e5/409ce5d04f13cffc25f7626ecee4283a.gif");
+  background-size: cover;
+  background-color: var(--dark-blue1);
+}
+
+.square.end {
+  background-image: url("https://media.istockphoto.com/id/1215682057/pt/vetorial/vector-pixel-art-isolated-treasure-chest.jpg?s=170667a&w=0&k=20&c=HrmOqhX0l9bUAPcHBMFEbXCMh6VZZMnkxZpNWarYfGg=");
+  background-size: cover;
+  background-color: var(--dark-blue1);
 }
