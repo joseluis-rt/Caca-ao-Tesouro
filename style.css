@@ -84,7 +84,9 @@ h1 span {
 }
 
 .square.highlight {
-  background: var(--dark-brown);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Red_x.svg");
+  background-size: cover;
+  
 }
 
 .square.clicked {
@@ -177,4 +179,3 @@ button:hover {
   font-size: 14px;
   padding: 4px 8px;
 }
-
