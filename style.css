@@ -16,6 +16,7 @@
   --red:        #DC0000;
   --light-red:  #ED2B2A;
   
+  --brown:      #603601;
   --dark-brown: #1A120B;
   --gray:       #E4DCCF;
 }
@@ -26,15 +27,35 @@ html {
     background: url(https://images.nightcafe.studio/jobs/VpSzasMCnzpftISyjGmh/VpSzasMCnzpftISyjGmh--2--0ekpk_4x.jpg?tr=w-1600,c-at_max) no-repeat center center fixed;
     background-size: cover;
     position: relative;
-    font-family: 'Bruno Ace SC', sans-serif;
+    font-family: 'Lobster', cursive;
+}
+
+.title {
+  
+  color: var(--light-beige); 
+  font-size: 40px; 
+  font-weight: bold; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+  -webkit-text-stroke: 1px var(--brown);
+  background-image: url("https://talenthouse-res.cloudinary.com/image/upload/c_limit,h_1000,w_1000/v1/user-549495/submissions/rzyjnknkdoob1wcmadks.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  padding: 50px 20px;
+  opacity: 0.7;
+  height: 50px;
+  vertical-align: top;
+}
+
+h1 span {
+  color: var(--brown);
 }
 
 
 
 .container {
-  position: absolute;
-  height: 70%;
-  width: 70%;
+  width: auto;
+  height: auto;
   background-color: var(--light-blue);
 }
 
@@ -105,11 +126,14 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin: 20px 0;
+  font-family: 'Lobster', cursive;
 }
 
 button:hover {
   background-color: var(--dark-blue2);
 }
+
+
 
 
 #obstacle-selector {
@@ -128,6 +152,28 @@ button:hover {
 }
 
 #obstacle-selector button {
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+
+
+#xy-selector {
+  margin: 10px 0;
+}
+
+#xy-selector label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+
+#xy-selector input {
+  width: 50px;
+  margin-right: 10px;
+}
+
+#xy-selector button {
   font-size: 14px;
   padding: 4px 8px;
 }
