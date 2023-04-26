@@ -13,12 +13,28 @@
   
   
   <body>
-    <div clas="controls">
-      
-    </div>
-    
+    <h1 class="title">Caça ao <span>Tesouro</span></h1>
     <main>
-      <h1 class="title">Caça ao <span>Tesouro</span></h1>
+      <div clas="controls">
+      <button onclick="restart_obstacles()">Reiniciar Obstáculos</button>
+      
+      <div id="obstacle-selector">
+        <label for="num-obstacles">Número de obstáculos:</label>
+        <input type="number" id="num-obstacles" min="0" max="100" value="23">
+        <button onclick="update_obstacles()">Confirmar</button>  
+      </div>
+        
+      <div>
+  <label for="grid-size-x">Tamanho X:</label>
+  <input type="number" id="grid-size-x" min="1" max="20" value="10">
+</div>
+<div>
+  <label for="grid-size-y">Tamanho Y:</label>
+  <input type="number" id="grid-size-y" min="1" max="20" value="10">
+</div>
+<button onclick="change_grid_size()">Mudar Tamanho do Grid</button>
+
+      
       <div class="container">
       <div id="massive-grid"></div>
       </div>

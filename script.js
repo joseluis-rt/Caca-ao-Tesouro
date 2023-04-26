@@ -7,13 +7,12 @@ let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
-let num_obstacle = 20;
+let num_obstacle = 23;
 
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
-  grid.addEventListener("wheel", scroll_handler);
 }
 
 function draw_grid(height, width) {
@@ -143,5 +142,47 @@ function get_neighbors(node) {
   return neighbors.filter(neighbor => neighbor !== undefined && !neighbor.classList.contains("obstacle"));
 }
 
+
+
+
+
+
+function restart_obstacles() {
+  // Remove all obstacles
+  let obstacles = document.querySelectorAll(".obstacle");
+  for (let obstacle of obstacles) {
+    obstacle.classList.remove("obstacle");
+  }
+  
+  // Add new obstacles
+  add_obstacles(num_obstacle);
+}
+
+function update_obstacles() {
+  let num_input = document.getElementById("num-obstacles");
+  let new_num_obstacle = parseInt(num_input.value);
+  
+  if (!isNaN(new_num_obstacle)) {
+    num_obstacle = new_num_obstacle;
+    restart_obstacles();
+  }
+}
+
+function change_grid_size() {
+  let grid_size_x_input = document.getElementById("grid-size-x");
+  let grid_size_y_input = document.getElementById("grid-size-y");
+
+  let new_grid_size_x = parseInt(grid_size_x_input.value);
+  let new_grid_size_y = parseInt(grid_size_y_input.value);
+
+  if (new_grid_size_x !== grid_size_x || new_grid_size_y !== grid_size_y) {
+    grid_size_x = new_grid_size_x;
+    grid_size_y = new_grid_size_y;
+    grid_matrix = [];
+    path_len = grid_size_x * grid_size_y;
+    grid.innerHTML = "";
+    init();
+  }
+}
 
 init();
