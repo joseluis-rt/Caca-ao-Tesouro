@@ -2,61 +2,137 @@
 :root {
   --dark-blue1: #06283D;
   --dark-blue2: #0A4D68;
-  --blue:       #088395;
-  --light-blue: #05BFDB; 
-  --cyan:       #00FFCA;
-  
-  --snow:       #F6F1F1;
-  --beige:      #FFDB89;
-  --light-beige:#FFF6C3;
-  --yellow:     #FCE22A;
-  --green:      #16FF00;
-  
-  --dark-red:   #850000;
-  --red:        #DC0000;
-  --light-red:  #ED2B2A;
-  
-  --brown:      #603601;
+  --stroke: #16213E;
+
+  --blue: #088395;
+  --light-blue: #05BFDB;
+  --cyan: #00FFCA;
+
+  --snow: #F6F1F1;
+  --beige: #FFDB89;
+  --light-beige: #FFF6C3;
+  --yellow: #FCE22A;
+  --green: #16FF00;
+
+  --dark-red: #850000;
+  --red: #DC0000;
+  --light-red: #ED2B2A;
+
+  --brown: #603601;
   --dark-brown: #1A120B;
-  --gray:       #E4DCCF;
+  --gray: #E4DCCF;
 }
 
 html {
-    width: 100%;
-    height: 100%;
-    background: url(https://images.nightcafe.studio/jobs/VpSzasMCnzpftISyjGmh/VpSzasMCnzpftISyjGmh--2--0ekpk_4x.jpg?tr=w-1600,c-at_max) no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-    font-family: 'Lobster', cursive;
+  width: 100%;
+  height: 100%;
+  background: url("assets/pirate.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Lobster', cursive;
 }
 
+.title-container {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  background-image: url("assets/wood.jpg");
+  border-radius: 20px;
+}
+
+
 .title {
-  
-  color: var(--light-beige); 
-  font-size: 40px; 
-  font-weight: bold; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
-  -webkit-text-stroke: 1px var(--brown);
-  background-image: url("https://talenthouse-res.cloudinary.com/image/upload/c_limit,h_1000,w_1000/v1/user-549495/submissions/rzyjnknkdoob1wcmadks.gif");
-  background-repeat: no-repeat;
+  color: var(--light-beige);
+  font-size: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 1px var(--dark-brown);
+  background-image: url("assets/title.gif");
   background-size: cover;
-  display: inline-block;
   padding: 50px 20px;
-  opacity: 0.7;
-  height: 50px;
-  vertical-align: top;
+  display: inline-block;
+  margin: 0;
+  height: 150px;
+  width: 470px;
 }
 
 h1 span {
-  color: var(--brown);
+  color: var(--yellow);
 }
 
+footer {
+  position: relative;
+  top: 10px;
+  left: 4%;
+  width: 90%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 450px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(2, 83, 83);
+  padding: 20px;
+  border-radius: 20px;
+  border: 6px solid var(--stroke);
+  margin-right: 30px;
+  background-image: url("assets/sand.png");
+  background-size: cover;
+}
+
+label[for="guide"] {
+  border-radius: 20px;
+  color: #000;
+  font-size: large;
+  padding: 20px;
+  background-image: url("assets/paper.png");
+  background-size: cover;
+}
+
+label[for="num-obstacles"] {
+  border-radius: 3px;
+  color: white;
+  background-color: #000;
+  padding: 5px;
+}
+
+label[for="grid-size-x"] {
+  border-radius: 3px;
+  color: white;
+  background-color: #000;
+  padding: 2px;
+}
+
+label[for="grid-size-y"] {
+  border-radius: 3px;
+  color: white;
+  background-color: #000;
+  padding: 2px;
+}
 
 .container {
   width: auto;
   height: auto;
-  background-color: var(--light-blue);
 }
 
 #massive-grid {
@@ -64,12 +140,12 @@ h1 span {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .square {
@@ -80,13 +156,11 @@ h1 span {
 
 .square.path {
   background: var(--yellow);
-  
+
 }
 
 .square.highlight {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Red_x.svg");
-  background-size: cover;
-  
+  background: var(--dark-brown);
 }
 
 .square.clicked {
@@ -100,7 +174,7 @@ h1 span {
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
   border-radius: 10px 10px 10px;
-  
+
 }
 
 .square.end {
@@ -120,23 +194,58 @@ h1 span {
 
 
 button {
-  background-color: var(--dark-blue1);
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
+  margin: 20px;
+}
+
+.custom-btn {
+  width: 160px;
+  height: 60px;
+  color: #000;
   border-radius: 5px;
-  cursor: pointer;
-  margin: 20px 0;
+  padding: 10px 25px;
   font-family: 'Lobster', cursive;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+  outline: none;
 }
 
-button:hover {
-  background-color: var(--dark-blue2);
+.btn-search {
+  background: #bfbc0c;
+  border: none;
+  z-index: 1;
 }
 
+.btn-search:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+  transition: all 0.3s ease;
+}
 
+.btn-search:hover {
+  color: #fff;
+}
 
+.btn-search:hover:after {
+  left: 0;
+  width: 100%;
+}
 
 #obstacle-selector {
   margin: 10px 0;
@@ -157,8 +266,6 @@ button:hover {
   font-size: 14px;
   padding: 4px 8px;
 }
-
-
 
 #xy-selector {
   margin: 10px 0;

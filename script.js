@@ -1,4 +1,4 @@
-let grid_size_x = 6;
+let grid_size_x = 10;
 let grid_size_y = grid_size_x;
 let square_size_height = 40;
 let square_size_width = 40;
@@ -7,8 +7,11 @@ let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
-let num_obstacle = 10;
+let num_obstacle = 23;
 
+const pirate_music = new Audio("assets/pirate_music.mp3"); //music
+pirate_music.loop = true;
+pirate_music.volume = 0.8;
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
@@ -56,7 +59,6 @@ function add_obstacles(num_obstacle) {
   }
 }
 
-
 function square_mouseenter(event) {
   let elem = event.target;
   elem.classList.add("highlight");
@@ -86,6 +88,7 @@ function square_click(event) {
     startNode = elem;
     endNode = null;
     startNode.classList.add("start");
+    clear_path();
   }
 }
 
@@ -98,7 +101,6 @@ function draw_path() {
     elem.classList.add("path");
   }
 }
-
 
 function clear_path() {
   for (let elem of document.querySelectorAll(".path")) {
@@ -142,11 +144,6 @@ function get_neighbors(node) {
   return neighbors.filter(neighbor => neighbor !== undefined && !neighbor.classList.contains("obstacle"));
 }
 
-
-
-
-
-
 function restart_obstacles() {
   // Remove all obstacles
   let obstacles = document.querySelectorAll(".obstacle");
@@ -186,3 +183,7 @@ function change_grid_size() {
 }
 
 init();
+
+window.onclick = function() {
+  pirate_music.play();
+};
