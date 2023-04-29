@@ -7,7 +7,8 @@ let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
-let num_obstacle = 23;
+let num_obstacle = 20;
+let search_mode = "bfs";
 
 const pirate_music = new Audio("assets/pirate_music.mp3"); //music
 pirate_music.loop = true;
@@ -46,13 +47,17 @@ function draw_grid(height, width) {
 
 function add_obstacles(num_obstacle) {
   let added_obstacle = 0;
-  
+
   while (added_obstacle < num_obstacle) {
     let i = Math.floor(Math.random() * grid_size_x);
     let j = Math.floor(Math.random() * grid_size_y);
     let node = grid_matrix[i][j];
-    
-    if (!node.classList.contains("start") && !node.classList.contains("end") && !node.classList.contains("obstacle")) {
+
+    if (
+      !node.classList.contains("start") &&
+      !node.classList.contains("end") &&
+      !node.classList.contains("obstacle")
+    ) {
       node.classList.add("obstacle");
       added_obstacle++;
     }
@@ -96,18 +101,18 @@ function square_click(event) {
   if (elem.classList.contains("obstacle")) {
     return;
   }
-  
+
   if (startNode === null) {
     startNode = elem;
     elem.classList.add("start");
   } else if (endNode === null) {
     endNode = elem;
 
-    if(draw_path() == false) {
+    if (draw_path() == false) {
       elem.classList.add("end2");
-    }else {
-    elem.classList.add("end");
-    draw_path();
+    } else {
+      elem.classList.add("end");
+      draw_path();
     }
   } else {
     startNode.classList.remove("start");
@@ -120,11 +125,28 @@ function square_click(event) {
   }
 }
 
+function change_search_mode() {
+  search_mode = document.getElementById("search-mode").value;
+}
+
 function draw_path() {
   if (startNode === null || endNode === null) return;
   clear_path();
-  let path = shortest_path(startNode, endNode);
-  if (path == null){
+
+  let path;
+
+  if (search_mode === "bfs") {
+    path = shortest_path(startNode, endNode);
+  } else if (search_mode === "dfs") {
+    path = depth_first_search(startNode, endNode);
+  /*} else if (search_mode === "dijkstra") {
+    path = dijkstra(startNode, endNode);*/
+  } else {
+    console.error("Invalid search mode:", search_mode);
+    return;
+  }
+
+  if (path == null) {
     return false;
   } else {
     for (let elem of path) {
@@ -150,38 +172,70 @@ function clear_path() {
 function shortest_path(start, end) {
   let visited = new Set();
   let queue = [[start, []]];
-  
+
   while (queue.length > 0) {
     let [node, path] = queue.shift();
-    
+
     if (node === end) {
       return path.concat([node]);
     }
-    
+
     if (visited.has(node)) continue;
     visited.add(node);
-    
+
     for (let neighbor of get_neighbors(node)) {
       if (!visited.has(neighbor)) {
         queue.push([neighbor, path.concat([node])]);
       }
     }
   }
-  
+
   return null;
 }
 
 function get_neighbors(node) {
   let i = Number(node.dataset.i);
   let j = Number(node.dataset.j);
-  let neighbors = [    (grid_matrix[i - 1] || [])[j],
+  let neighbors = [
+    (grid_matrix[i - 1] || [])[j],
     (grid_matrix[i] || [])[j + 1],
     (grid_matrix[i + 1] || [])[j],
-    (grid_matrix[i] || [])[j - 1],
+    (grid_matrix[i] || [])[j - 1]
   ];
-  
-  return neighbors.filter(neighbor => neighbor !== undefined && !neighbor.classList.contains("obstacle"));
+
+  return neighbors.filter(
+    (neighbor) =>
+      neighbor !== undefined && !neighbor.classList.contains("obstacle")
+  );
 }
+
+function depth_first_search(start, end) {
+  let visited = new Set();
+  let stack = [[start, []]];
+
+  while (stack.length > 0) {
+    let [node, path] = stack.pop();
+
+    if (node === end) {
+      return path.concat([node]);
+    }
+
+    if (visited.has(node)) continue;
+    visited.add(node);
+
+    for (let neighbor of get_neighbors(node)) {
+      if (!visited.has(neighbor)) {
+        stack.push([neighbor, path.concat([node])]);
+      }
+    }
+  }
+
+  return null;
+}
+
+//function dijkstra(start, end) {}
+
+
 
 function restart_obstacles() {
   // Remove all obstacles
@@ -189,7 +243,7 @@ function restart_obstacles() {
   for (let obstacle of obstacles) {
     obstacle.classList.remove("obstacle");
   }
-  
+
   startNode.classList.remove("start");
   endNode.classList.remove("end");
   endNode.classList.remove("end2");
@@ -202,7 +256,7 @@ function restart_obstacles() {
 function update_obstacles() {
   let num_input = document.getElementById("num-obstacles");
   let new_num_obstacle = parseInt(num_input.value);
-  
+
   if (!isNaN(new_num_obstacle)) {
     num_obstacle = new_num_obstacle;
     restart_obstacles();
@@ -233,6 +287,6 @@ function change_grid_size() {
 
 init();
 
-window.onclick = function() {
+window.onclick = function () {
   pirate_music.play();
 };
