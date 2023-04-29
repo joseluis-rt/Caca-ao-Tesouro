@@ -11,7 +11,7 @@ let num_obstacle = 23;
 
 const pirate_music = new Audio("assets/pirate_music.mp3"); //music
 pirate_music.loop = true;
-pirate_music.volume = 0.8;
+pirate_music.volume = 0.3;
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
@@ -59,6 +59,24 @@ function add_obstacles(num_obstacle) {
   }
 }
 
+function limit_input_obstacle(input) {
+  if (input.value > 100) {
+    input.value = input.max;
+  }
+}
+
+function limit_input_x(input) {
+  if (input.value > 20) {
+    input.value = input.max;
+  }
+}
+
+function limit_input_y(input) {
+  if (input.value > 20) {
+    input.value = input.max;
+  }
+}
+
 function square_mouseenter(event) {
   let elem = event.target;
   elem.classList.add("highlight");
@@ -74,17 +92,27 @@ let endNode = null;
 
 function square_click(event) {
   let elem = event.target;
+
+  if (elem.classList.contains("obstacle")) {
+    return;
+  }
   
   if (startNode === null) {
     startNode = elem;
     elem.classList.add("start");
   } else if (endNode === null) {
     endNode = elem;
+
+    if(draw_path() == false) {
+      elem.classList.add("end2");
+    }else {
     elem.classList.add("end");
     draw_path();
+    }
   } else {
     startNode.classList.remove("start");
     endNode.classList.remove("end");
+    endNode.classList.remove("end2");
     startNode = elem;
     endNode = null;
     startNode.classList.add("start");
@@ -96,10 +124,21 @@ function draw_path() {
   if (startNode === null || endNode === null) return;
   clear_path();
   let path = shortest_path(startNode, endNode);
-
-  for (let elem of path) {
-    elem.classList.add("path");
+  if (path == null){
+    return false;
+  } else {
+    for (let elem of path) {
+      elem.classList.add("path");
+    }
   }
+
+  let count = path.length;
+  update_step_count(count);
+}
+
+function update_step_count(count) {
+  let stepCount = document.getElementById("step-count");
+  stepCount.innerText = count - 1;
 }
 
 function clear_path() {
@@ -151,6 +190,11 @@ function restart_obstacles() {
     obstacle.classList.remove("obstacle");
   }
   
+  startNode.classList.remove("start");
+  endNode.classList.remove("end");
+  endNode.classList.remove("end2");
+  clear_path();
+
   // Add new obstacles
   add_obstacles(num_obstacle);
 }
@@ -163,6 +207,11 @@ function update_obstacles() {
     num_obstacle = new_num_obstacle;
     restart_obstacles();
   }
+
+  startNode.classList.remove("start");
+  endNode.classList.remove("end");
+  endNode.classList.remove("end2");
+  clear_path();
 }
 
 function change_grid_size() {

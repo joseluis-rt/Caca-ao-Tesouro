@@ -135,6 +135,21 @@ label[for="grid-size-y"] {
   height: auto;
 }
 
+#steps {
+  width: 10%;
+  height: 10%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(2, 83, 83);
+  padding: 10px;
+  border-radius: 20px;
+  border: 6px solid var(--stroke);
+  margin-right: 30px;
+  background-image: url("assets/sand.png");
+  background-size: cover;
+}
+
 #massive-grid {
   position: relative;
   left: 50%;
@@ -160,7 +175,8 @@ label[for="grid-size-y"] {
 }
 
 .square.highlight {
-  background: var(--dark-brown);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Red_x.svg");
+  background-size: cover;
 }
 
 .square.clicked {
@@ -180,6 +196,15 @@ label[for="grid-size-y"] {
 .square.end {
   background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
   background-size: cover;
+  background-color: var(--green);
+  transform: scale(1.3);
+  border: 1px solid var(--dark-blue1);
+  border-radius: 10px 10px 10px;
+}
+
+.square.end2 {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
+  background-size: cover;
   background-color: var(--red);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
@@ -190,6 +215,7 @@ label[for="grid-size-y"] {
   background-color: var(--dark-blue2);
   background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
   background-size: cover;
+  cursor: not-allowed;
 }
 
 
