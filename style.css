@@ -23,144 +23,69 @@
   --gray: #E4DCCF;
 }
 
-html {
-  width: 100%;
-  height: 100%;
-  background: url("assets/pirate.jpg") no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Lobster', cursive;
+.box {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
 }
-
-.title-container {
-  width: 500px;
-  margin: 0 auto;
-  text-align: center;
-  background-image: url("assets/wood.jpg");
-  border-radius: 20px;
-}
-
 
 .title {
-  color: var(--light-beige);
-  font-size: 50px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  -webkit-text-stroke: 1px var(--dark-brown);
-  background-image: url("assets/title.gif");
-  background-size: cover;
-  padding: 50px 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls div {
+  margin-bottom: 10px;
+}
+
+.controls label {
   display: inline-block;
-  margin: 0;
-  height: 150px;
-  width: 470px;
+  margin-right: 5px;
 }
 
-h1 span {
-  color: var(--yellow);
-}
-
-footer {
-  position: relative;
-  top: 10px;
-  left: 4%;
-  width: 90%;
-  height: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-  margin-top: 10px;
+.custom-btn {
+  background-color: #4CAF50;
+  border: none;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 60px;
+.btn-search {
+  background-color: #2196F3;
 }
 
-.menu-container {
-  width: 100%;
-  max-width: 450px;
+.grid {
+  text-align: center;
 }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(2, 83, 83);
-  padding: 20px;
-  border-radius: 20px;
-  border: 6px solid var(--stroke);
-  margin-right: 30px;
-  background-image: url("assets/sand.png");
-  background-size: cover;
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: gray;
 }
 
-label[for="guide"] {
-  border-radius: 20px;
-  color: #000;
-  font-size: large;
-  padding: 20px;
-  background-image: url("assets/paper.png");
-  background-size: cover;
-}
 
-label[for="num-obstacles"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 5px;
-}
-
-label[for="grid-size-x"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 2px;
-}
-
-label[for="grid-size-y"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 2px;
-}
-
-.container {
-  width: auto;
-  height: auto;
-}
-
-#steps {
-  width: 10%;
-  height: 10%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(2, 83, 83);
-  padding: 10px;
-  border-radius: 20px;
-  border: 6px solid var(--stroke);
-  margin-right: 30px;
-  background-image: url("assets/sand.png");
-  background-size: cover;
-}
 
 #massive-grid {
   position: relative;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
 }
 
 .square {
@@ -216,99 +141,4 @@ label[for="grid-size-y"] {
   background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
   background-size: cover;
   cursor: not-allowed;
-}
-
-
-button {
-  margin: 20px;
-}
-
-.custom-btn {
-  width: 160px;
-  height: 60px;
-  color: #000;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lobster', cursive;
-  font-weight: 600;
-  font-size: medium;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1);
-  outline: none;
-}
-
-.btn-search {
-  background: #bfbc0c;
-  border: none;
-  z-index: 1;
-}
-
-.btn-search:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background-color: #663dff;
-  border-radius: 5px;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1);
-  transition: all 0.3s ease;
-}
-
-.btn-search:hover {
-  color: #fff;
-}
-
-.btn-search:hover:after {
-  left: 0;
-  width: 100%;
-}
-
-#obstacle-selector {
-  margin: 10px 0;
-}
-
-#obstacle-selector label {
-  display: inline-block;
-  width: 150px;
-  font-weight: bold;
-}
-
-#obstacle-selector input {
-  width: 50px;
-  margin-right: 10px;
-}
-
-#obstacle-selector button {
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-#xy-selector {
-  margin: 10px 0;
-}
-
-#xy-selector label {
-  display: inline-block;
-  width: 150px;
-  font-weight: bold;
-}
-
-#xy-selector input {
-  width: 50px;
-  margin-right: 10px;
-}
-
-#xy-selector button {
-  font-size: 14px;
-  padding: 4px 8px;
 }
