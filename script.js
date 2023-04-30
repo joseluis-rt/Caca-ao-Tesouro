@@ -1,7 +1,7 @@
 let grid_size_x = 10;
 let grid_size_y = grid_size_x;
-let square_size_height = 40;
-let square_size_width = 40;
+let square_size_height = 32;
+let square_size_width = 32;
 let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
@@ -139,7 +139,7 @@ function draw_path() {
     path = shortest_path(startNode, endNode);
   } else if (search_mode === "dfs") {
     path = depth_first_search(startNode, endNode);
-  /*} else if (search_mode === "dijkstra") {
+    /*} else if (search_mode === "dijkstra") {
     path = dijkstra(startNode, endNode);*/
   } else {
     console.error("Invalid search mode:", search_mode);
@@ -234,8 +234,6 @@ function depth_first_search(start, end) {
 }
 
 //function dijkstra(start, end) {}
-
-
 
 function restart_obstacles() {
   // Remove all obstacles
