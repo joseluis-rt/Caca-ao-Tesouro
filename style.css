@@ -30,8 +30,7 @@
 html {
   width: 100%;
   height: 100%;
-  background: url("https://i.pinimg.com/originals/e4/15/c4/e415c48c6387706cc02f92b09501cab5.gif")
-    no-repeat center center fixed;
+  background: url("https://i.pinimg.com/originals/e4/15/c4/e415c48c6387706cc02f92b09501cab5.gif") no-repeat center center fixed;
   background-size: cover;
   opacity: 0.98;
 }
@@ -54,14 +53,9 @@ body {
 }
 
 .box {
-  min-width: var(--min-width);
-  flex: 1;
-  margin-bottom: 10px;
-  padding: 10px;
   border: 6px solid var(--dark-brown);
   border-radius: 20px;
   padding: 1em;
-  font-weight: 200;
   margin: 20px;
 }
 
@@ -69,7 +63,7 @@ body {
   font-size: 24px;
   min-width: var(--min-width);
   max-width: var(----max-width);
-  height: 100px;
+  height: 150px;
   border: 0px;
 }
 
@@ -131,6 +125,7 @@ h1 span {
 
   background-image: url("https://64.media.tumblr.com/f23c041135d06764ba7d44b3f3fa0dd7/tumblr_o3zyf0Q3rq1s335jfo1_r3_540.gif");
   background-size: cover;
+  background-position: center;
   box-shadow: inset 6px 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -138,9 +133,13 @@ h1 span {
   margin-bottom: 1px;
 }
 
+/*
+
 .controls label {
   display: inline-block;
 }
+
+*/
 
 .item {
   font-size: 19px;
@@ -148,21 +147,18 @@ h1 span {
   width: 180px;
   margin: 5px;
   border: 4px solid var(--dark-brown);
-  border-radius: 40px;
+  border-radius: 30px;
   background-image: url("https://art.pixilart.com/c2dc878546bd799.png");
   background-size: cover;
   background-repeat: repeat-xy;
   background-size: auto 95%;
   box-shadow: inset 5px 5px rgba(0, 0, 0, 0.5);
-  
   opacity: 92%;
 }
 
 .custom-btn {
   width: 100%;
-  height: 10%;
   color: var(--dark-brown);
-  border-radius: 5px;
   padding: 10px 25px;
   font-family: "Lobster", cursive;
   font-weight: 100;
@@ -171,7 +167,6 @@ h1 span {
   transition: all 0.4s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 3px 3px rgba(0, 0, 0, 0.3);
   outline: none;
 }
 
@@ -220,15 +215,24 @@ h1 span {
   box-shadow: inset 3px 3px rgba(0, 0, 0, 0.3);
 }
 
+label[for="guide"] {
+  border-radius: 20px;
+  color: #000;
+  border: 6px solid var(--dark-brown);
+  font-size: large;
+  padding: 20px;
+  margin-right: 15px;
+  background-image: url("assets/paper.png");
+  background-size: cover;
+}
+
 .grid {
   margin-top: 30px;
   overflow: hidden;
-
-  flex: 2;
   min-width: 550px;
-
   background-image: url("https://64.media.tumblr.com/1e416390b560f0f0daeca38edf34eb08/tumblr_pin20wzlDO1wzqe8ho1_1280.gif");
   background-size: cover;
+  background-position: center;
   box-shadow: inset 6px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -259,9 +263,7 @@ h1 span {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-
   margin: auto;
-  top: 2%;
 }
 
 .square {

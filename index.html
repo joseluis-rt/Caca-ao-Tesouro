@@ -18,14 +18,18 @@
   </div>
 
   <div class="box main">
+
+    <label for="guide">Ahoy, companheiro pirata!<br><br>Escolha um ponto de partida e destino clicando no grid
+      a baixo.<br><br>Nosso objetivo é encontrar o caminho mais curto até o aguardado tesouro.<br><br>Escolha entre
+      BFS (Breadth First Search) ou DFS (Depth First Search).</label>
+
     <div class="box controls">
 
       <div class="item control1" id="obstacle-selector">
-        <label for="num-obstacles">Número de obstáculos:</label>
+        <label for="num-obstacles">Número de ilhas:</label>
         <input type="number" id="num-obstacles" min="0" max="100" value="20" oninput="limit_input_obstacle(this)">
         <button class="custom-btn btn-search" onclick="update_obstacles()">Confirmar</button>
         <button class="custom-btn btn-search" onclick="restart_obstacles()">Embaralhar Ilhas</button>
-
       </div>
 
       <div class="item control2" id="xy-selector">
@@ -43,7 +47,7 @@
       <div class="item control3" id="search-mode-selector">
         <label for="search-mode">Modo de busca:</label>
         <select id="search-mode" onchange="change_search_mode()">
-          <option value="bfs" selected>BFS</option>
+          <option value="bfs">BFS</option>
           <option value="dfs">DFS</option>
           <!--<option value="dijkstra">Dijkstra</option>-->
         </select>

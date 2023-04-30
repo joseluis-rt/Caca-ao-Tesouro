@@ -6,7 +6,6 @@ let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
-let selected;
 let num_obstacle = 20;
 let search_mode = "bfs";
 
@@ -45,6 +44,16 @@ function draw_grid(height, width) {
   }
 }
 
+function square_mouseenter(event) {
+  let elem = event.target;
+  elem.classList.add("highlight");
+  draw_path(elem);
+}
+
+function square_mouseleave(event) {
+  event.target.classList.remove("highlight");
+}
+
 function add_obstacles(num_obstacle) {
   let added_obstacle = 0;
 
@@ -80,16 +89,6 @@ function limit_input_y(input) {
   if (input.value > 20) {
     input.value = input.max;
   }
-}
-
-function square_mouseenter(event) {
-  let elem = event.target;
-  elem.classList.add("highlight");
-  draw_path(elem);
-}
-
-function square_mouseleave(event) {
-  event.target.classList.remove("highlight");
 }
 
 let startNode = null;
@@ -136,7 +135,7 @@ function draw_path() {
   let path;
 
   if (search_mode === "bfs") {
-    path = shortest_path(startNode, endNode);
+    path = breadth_first_search(startNode, endNode);
   } else if (search_mode === "dfs") {
     path = depth_first_search(startNode, endNode);
     /*} else if (search_mode === "dijkstra") {
@@ -169,7 +168,7 @@ function clear_path() {
   }
 }
 
-function shortest_path(start, end) {
+function breadth_first_search(start, end) {
   let visited = new Set();
   let queue = [[start, []]];
 
