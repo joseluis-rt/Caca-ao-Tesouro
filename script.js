@@ -15,17 +15,6 @@ const pirate_music = new Audio("assets/pirate_music.mp3"); //music
 pirate_music.loop = true;
 pirate_music.volume = 0.3;
 
-let restart = new Audio("assets/restart.mp3");
-restart.volume = 0.5;
-
-let change_grid = new Audio("assets/change_grid.mp3");
-change_grid.volume = 0.5;
-
-let chest = new Audio("assets/chest.mp3");
-
-let chest_error = new Audio("assets/chest_error.mp3");
-
-let ship = new Audio("assets/ship.mp3");
 function init() {
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
