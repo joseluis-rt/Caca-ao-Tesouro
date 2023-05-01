@@ -87,9 +87,8 @@ function add_obstacles(num_obstacle) {
 }
 
 function limit_input_obstacle(input) {
-  if (input.value > 100) {
-    input.value = input.max;
-  }
+  if (input.value > path_len)
+    input.value = path_len;
 }
 
 function limit_input_x(input) {
@@ -256,6 +255,9 @@ function restart_obstacles() {
 
   let obstacles = document.querySelectorAll(".obstacle");
 
+  if (document.getElementById("num-obstacles") == 5)
+    return;
+
   for (let obstacle of obstacles) {
     obstacle.classList.remove("obstacle");
   }
@@ -315,15 +317,20 @@ function change_grid_size() {
     grid_size_y = new_grid_size_y;
     grid_matrix = [];
     path_len = grid_size_x * grid_size_y;
-    grid.innerHTML = "";
-    init();
+
   }
+    grid.innerHTML = "";
+
+    draw_grid(grid_size_x, grid_size_y);
+    add_obstacles(0);  
+    
+    let input = document.getElementById("num-obstacles");
+    input.value = input.defaultValue;
 }
 
 init();
 
 window.onclick = function () {
-  pirate_music.play();
 };
 
 window.onload = function() {
