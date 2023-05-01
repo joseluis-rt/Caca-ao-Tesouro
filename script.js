@@ -1,7 +1,7 @@
 let grid_size_x = 10;
 let grid_size_y = grid_size_x;
-let square_size_height = 32;
-let square_size_width = 32;
+let square_size_height = 50;
+let square_size_width = 50;
 let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
