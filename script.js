@@ -6,14 +6,25 @@ let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
-let selected;
 let num_obstacle = 20;
 let search_mode = "bfs";
 
-
-const pirate_music = new Audio("assets/pirate_music.mp3"); //music
+const pirate_music = new Audio("assets/pirate_music.mp3");
 pirate_music.loop = true;
 pirate_music.volume = 0.3;
+
+let restart = new Audio("assets/restart.mp3");
+restart.volume = 0.5;
+
+let change_grid = new Audio("assets/change_grid.mp3");
+change_grid.volume = 0.5;
+
+let chest = new Audio("assets/chest.mp3");
+
+let chest_error = new Audio("assets/chest_error.mp3");
+
+let ship = new Audio("assets/ship.mp3");
+
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
@@ -46,38 +57,38 @@ function draw_grid(height, width) {
   }
 }
 
+function square_mouseenter(event) {
+  let elem = event.target;
+  elem.classList.add("highlight");
+  draw_path(elem);
+}
+
+function square_mouseleave(event) {
+  event.target.classList.remove("highlight");
+}
 
 function add_obstacles(num_obstacle) {
-  for (let i = 0; i < num_obstacle; i++) {
-    let row = Math.floor(Math.random() * grid_size_x);
-    let col = Math.floor(Math.random() * grid_size_y);
-    let square = document.querySelector(`.square[data-i="${row}"][data-j="${col}"]`);
+  let added_obstacle = 0;
 
-    if (square.classList.contains("obstacle")) {
-      i--;
-    } else {
-      let obstacleClass = "";
-      let random = Math.random();
+  while (added_obstacle < num_obstacle) {
+    let i = Math.floor(Math.random() * grid_size_x);
+    let j = Math.floor(Math.random() * grid_size_y);
+    let node = grid_matrix[i][j];
 
-      if (random < 0.8) {
-        obstacleClass = "obstacle-1";
-      } else if (random < 0.9) {
-        obstacleClass = "obstacle-2";
-      } else {
-        obstacleClass = "obstacle-3";
-      }
-
-      square.classList.add("obstacle", obstacleClass);
+    if (
+      !node.classList.contains("start") &&
+      !node.classList.contains("end") &&
+      !node.classList.contains("obstacle")
+    ) {
+      node.classList.add("obstacle");
+      added_obstacle++;
     }
   }
 }
 
-
-
 function limit_input_obstacle(input) {
-  if (input.value > 100) {
-    input.value = input.max;
-  }
+  if (input.value > path_len)
+    input.value = path_len;
 }
 
 function limit_input_x(input) {
@@ -92,16 +103,6 @@ function limit_input_y(input) {
   }
 }
 
-function square_mouseenter(event) {
-  let elem = event.target;
-  elem.classList.add("highlight");
-  draw_path(elem);
-}
-
-function square_mouseleave(event) {
-  event.target.classList.remove("highlight");
-}
-
 let startNode = null;
 let endNode = null;
 
@@ -113,14 +114,17 @@ function square_click(event) {
   }
 
   if (startNode === null) {
+    ship.play();
     startNode = elem;
     elem.classList.add("start");
   } else if (endNode === null) {
     endNode = elem;
 
     if (draw_path() == false) {
+      chest_error.play();
       elem.classList.add("end2");
     } else {
+      chest.play();
       elem.classList.add("end");
       draw_path();
     }
@@ -131,6 +135,7 @@ function square_click(event) {
     startNode = elem;
     endNode = null;
     startNode.classList.add("start");
+    ship.play();
     clear_path();
   }
 }
@@ -146,7 +151,7 @@ function draw_path() {
   let path;
 
   if (search_mode === "bfs") {
-    path = shortest_path(startNode, endNode);
+    path = breadth_first_search(startNode, endNode);
   } else if (search_mode === "dfs") {
     path = depth_first_search(startNode, endNode);
     /*} else if (search_mode === "dijkstra") {
@@ -179,7 +184,7 @@ function clear_path() {
   }
 }
 
-function shortest_path(start, end) {
+function breadth_first_search(start, end) {
   let visited = new Set();
   let queue = [[start, []]];
 
@@ -246,13 +251,17 @@ function depth_first_search(start, end) {
 //function dijkstra(start, end) {}
 
 function restart_obstacles() {
+  restart.play();
+
   let obstacles = document.querySelectorAll(".obstacle");
+
+  if (document.getElementById("num-obstacles") == 5)
+    return;
 
   for (let obstacle of obstacles) {
     obstacle.classList.remove("obstacle");
   }
 
-  // remove "start" and "end" classes from grid_matrix
   for (let row of grid_matrix) {
     for (let elem of row) {
       elem.classList.remove("start");
@@ -260,13 +269,16 @@ function restart_obstacles() {
     }
   }
 
-  // reset grid_matrix to an empty array
   grid_matrix = [];
   while (grid.firstChild) {
     grid.removeChild(grid.firstChild);
   }
 
-  // redraw the grid and add new obstacles
+  grid_matrix = [];
+  while (grid.firstChild) {
+    grid.removeChild(grid.firstChild);
+  }
+
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
   clear_path();
@@ -288,6 +300,8 @@ function update_obstacles() {
 }
 
 function change_grid_size() {
+  change_grid.play();
+
   let grid_size_x_input = document.getElementById("grid-size-x");
   let grid_size_y_input = document.getElementById("grid-size-y");
 
@@ -299,13 +313,29 @@ function change_grid_size() {
     grid_size_y = new_grid_size_y;
     grid_matrix = [];
     path_len = grid_size_x * grid_size_y;
-    grid.innerHTML = "";
-    init();
+
   }
+    grid.innerHTML = "";
+
+    draw_grid(grid_size_x, grid_size_y);
+    add_obstacles(0);  
+    
+    let input = document.getElementById("num-obstacles");
+    input.value = input.defaultValue;
 }
 
 init();
 
 window.onclick = function () {
-  pirate_music.play();
 };
+
+window.onload = function() {
+  let input = document.getElementById("num-obstacles");
+  input.value = input.defaultValue;
+
+  input = document.getElementById("grid-size-x");
+  input.value = input.defaultValue;
+
+  input = document.getElementById("grid-size-y");
+  input.value = input.defaultValue;
+}
