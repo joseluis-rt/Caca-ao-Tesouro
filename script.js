@@ -325,3 +325,14 @@ init();
 window.onclick = function () {
   pirate_music.play();
 };
+
+window.onload = function() {
+  let input = document.getElementById("num-obstacles");
+  input.value = input.defaultValue;
+
+  input = document.getElementById("grid-size-x");
+  input.value = input.defaultValue;
+
+  input = document.getElementById("grid-size-y");
+  input.value = input.defaultValue;
+}
