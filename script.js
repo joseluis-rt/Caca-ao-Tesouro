@@ -336,6 +336,7 @@ function change_grid_size() {
 init();
 
 window.onclick = function () {
+  pirate_music.play();
 };
 
 window.onload = function() {
