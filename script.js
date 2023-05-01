@@ -9,7 +9,7 @@ let grid_matrix = [];
 let num_obstacle = 20;
 let search_mode = "bfs";
 
-const pirate_music = new Audio("assets/pirate_music.mp3"); //music
+const pirate_music = new Audio("assets/pirate_music.mp3");
 pirate_music.loop = true;
 pirate_music.volume = 0.3;
 
@@ -251,7 +251,7 @@ function depth_first_search(start, end) {
 //function dijkstra(start, end) {}
 
 function restart_obstacles() {
-  restart.play(); //plays restart effect
+  restart.play();
 
   let obstacles = document.querySelectorAll(".obstacle");
 
@@ -262,7 +262,6 @@ function restart_obstacles() {
     obstacle.classList.remove("obstacle");
   }
 
-  // remove "start" and "end" classes from grid_matrix
   for (let row of grid_matrix) {
     for (let elem of row) {
       elem.classList.remove("start");
@@ -270,19 +269,16 @@ function restart_obstacles() {
     }
   }
 
-  // reset grid_matrix to an empty array
   grid_matrix = [];
   while (grid.firstChild) {
     grid.removeChild(grid.firstChild);
   }
 
-  // reset grid_matrix to an empty array
   grid_matrix = [];
   while (grid.firstChild) {
     grid.removeChild(grid.firstChild);
   }
 
-  // redraw the grid and add new obstacles
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
   clear_path();
