@@ -68,23 +68,32 @@ function square_mouseleave(event) {
 }
 
 function add_obstacles(num_obstacle) {
-  let added_obstacle = 0;
+  for (let i = 0; i < num_obstacle; i++) {
+    let row = Math.floor(Math.random() * grid_size_x);
+    let col = Math.floor(Math.random() * grid_size_y);
+    let square = document.querySelector(`.square[data-i="${row}"][data-j="${col}"]`);
 
-  while (added_obstacle < num_obstacle) {
-    let i = Math.floor(Math.random() * grid_size_x);
-    let j = Math.floor(Math.random() * grid_size_y);
-    let node = grid_matrix[i][j];
+    if (square.classList.contains("obstacle")) {
+      i--;
+    } else {
+      let obstacleClass = "";
+      let random = Math.random();
 
-    if (
-      !node.classList.contains("start") &&
-      !node.classList.contains("end") &&
-      !node.classList.contains("obstacle")
-    ) {
-      node.classList.add("obstacle");
-      added_obstacle++;
+      if (random < 0.8) {
+        obstacleClass = "obstacle-1";
+      } else if (random < 0.9) {
+        obstacleClass = "obstacle-2";
+      } else if (random < 0.95){
+        obstacleClass = "obstacle-3";
+      } else {
+        obstacleClass = "obstacle-4";
+      }
+
+      square.classList.add("obstacle", obstacleClass);
     }
   }
 }
+
 
 function limit_input_obstacle(input) {
   if (input.value > path_len)
