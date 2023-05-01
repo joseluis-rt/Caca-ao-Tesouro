@@ -11,6 +11,7 @@
   --light-beige: #fff6c3;
   --yellow: #fce22a;
   --brown: #cd8f2b;
+  --brown1: #906821;
 
   --green: #16ff00;
 
@@ -20,6 +21,7 @@
 
   --dark-brown: #1a120b;
   --gray: #e4dccf;
+  
 
   --min-width: 450px;
   --max-width: 100%;
@@ -201,7 +203,7 @@ label[for="guide"] {
   color: var(--dark-brown);
   border: 6px solid var(--dark-brown);
   font-size: large;
-  padding: 1px;
+  padding: 5px;
   margin-right: 15px;
   background-image: url("assets/paper.png");
   background-size: cover;
@@ -237,7 +239,7 @@ label[for="guide"] {
   min-width: 452px;
   max-width: 100%;
 
-  margin-top: -40px;
+  margin-top: -60px;
 
   text-align: center;
   font-size: 30px;
@@ -298,11 +300,9 @@ label[for="guide"] {
 }
 
 .square.end2 {
-  background-image: url("https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642329768-R7J9PRUDJUJKW3BYPCDQ/babkyKraken.gif?format=500w");
-  /* https://thumbs.gfycat.com/SpecificTameAustralianfurseal-max-1mb.gif */
-  /*  */
-  background-size: 220%;
-  background-position: center 47%;
+  background-image: url("https://thumbs.gfycat.com/SpecificTameAustralianfurseal-max-1mb.gif");
+  background-size: 140%;
+  background-position: center 50%;
   background-repeat: no-repeat;
 
   background-color: var(--red);
@@ -312,12 +312,35 @@ label[for="guide"] {
 }
 
 .square.obstacle {
-  background-color: var(--dark-blue2);
-  background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
-  background-size: 150%;
-  background-position: center 35%;
+  background-color: var(--brown1);
+  background-repeat: no-repeat;
   cursor: not-allowed;
 }
+
+.obstacle-1 {
+  background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png);
+  background-size: 150%;
+  background-position: center 35%;
+}
+
+.obstacle-2 {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642191387-KW94VVQ51MF8VH5BRCNV/goldNuggitX3.gif?format=1500w);
+  background-size: 70%;
+  background-position: center 95%;
+}
+
+.obstacle-3 {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642329768-R7J9PRUDJUJKW3BYPCDQ/babkyKraken.gif?format=1500w);
+  background-size: 170%;
+  background-position: center 40%;
+}
+
+.obstacle-4 {
+  background-image: url(https://thumbs.gfycat.com/AccomplishedOldfashionedHeron-max-1mb.gif);
+  background-size: 120%;
+  background-position: center;
+}
+
 
 @media screen and (max-width: var(--mobile-breakpoint)) {
   .main {
