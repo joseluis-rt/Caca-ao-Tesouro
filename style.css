@@ -56,12 +56,12 @@ body {
   border: 6px solid var(--dark-brown);
   border-radius: 20px;
   padding: 1em;
-  margin: 20px;
+  margin: 5vh;
 }
 
 .title {
   font-size: 24px;
-  /* min-width: var(--min-width); */
+  min-width: var(--min-width);
   max-width: var(----max-width);
   height: 150px;
   border: 0px;
@@ -91,7 +91,7 @@ h1 span {
 
 .main {
   overflow: hidden;
-  /* min-width: 460px;*/
+  min-width: 460px;
   max-width: var(----max-width);
   display: flex;
   flex-wrap: wrap;
@@ -237,7 +237,7 @@ label[for="guide"] {
 }
 
 .footer {
-  /* min-width: 452px; */
+  min-width: 452px;
   max-width: 100%;
 
   margin-top: -40px;
@@ -290,11 +290,11 @@ label[for="guide"] {
 }
 
 .square.start {
-  background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/05ba53280252abd.png");
+  background-image: url("https://media1.giphy.com/media/j2HThVbydxrvyljqq0/giphy.gif?cid=6c09b9526d4rt2mcpngnb4jupnl3wf7evq9d8eszyvxqb7z3&rid=giphy.gif&ct=s");
   /* https://gifs.eco.br/wp-content/uploads/2022/06/gifs-de-barco-pirata-3.gif */
-  /*  */
-  background-size: 120%;
-  background-position: center 35%;
+  /* https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/05ba53280252abd.png */
+  background-size: 125%;
+  background-position: center 50%;
   background-color: var(--green);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
