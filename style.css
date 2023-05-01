@@ -61,7 +61,7 @@ body {
 
 .title {
   font-size: 24px;
-  min-width: var(--min-width);
+  /* min-width: var(--min-width); */
   max-width: var(----max-width);
   height: 150px;
   border: 0px;
@@ -91,7 +91,7 @@ h1 span {
 
 .main {
   overflow: hidden;
-  min-width: 460px;
+  /* min-width: 460px;*/
   max-width: var(----max-width);
   display: flex;
   flex-wrap: wrap;
@@ -237,7 +237,7 @@ label[for="guide"] {
 }
 
 .footer {
-  min-width: 452px;
+  /* min-width: 452px; */
   max-width: 100%;
 
   margin-top: -40px;
@@ -265,9 +265,6 @@ label[for="guide"] {
   align-content: center;
   margin: auto;
   
-  margin: auto;
-  border-radius: 0px;
-  overflow: hidden;
   opacity: 97%;
   padding: 0px;
   
