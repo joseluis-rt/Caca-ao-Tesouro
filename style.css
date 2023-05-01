@@ -134,11 +134,9 @@ h1 span {
 }
 
 /*
-
 .controls label {
   display: inline-block;
 }
-
 */
 
 .item {
@@ -224,6 +222,7 @@ label[for="guide"] {
   margin-right: 15px;
   background-image: url("assets/paper.png");
   background-size: cover;
+  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.4);
 }
 
 .grid {
@@ -286,8 +285,11 @@ label[for="guide"] {
 }
 
 .square.start {
-  background-image: url("https://gifs.eco.br/wp-content/uploads/2022/06/gifs-de-barco-pirata-3.gif");
-  background-size: cover;
+  background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/05ba53280252abd.png");
+  /* https://gifs.eco.br/wp-content/uploads/2022/06/gifs-de-barco-pirata-3.gif */
+  /*  */
+  background-size: 120%;
+  background-position: center 35%;
   background-color: var(--green);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
@@ -295,8 +297,11 @@ label[for="guide"] {
 }
 
 .square.end {
-  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
-  background-size: cover;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679641884854-K6H8YJUYJ61QZVMIG5VB/captChestIdleHit.gif?format=500w");
+  /* https://cdn-icons-png.flaticon.com/512/3188/3188738.png */
+  /*  */
+  background-size: 170%;
+  background-position: center 45%;
   background-color: var(--green);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
@@ -304,8 +309,11 @@ label[for="guide"] {
 }
 
 .square.end2 {
-  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
-  background-size: cover;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642329768-R7J9PRUDJUJKW3BYPCDQ/babkyKraken.gif?format=500w");
+  /* https://thumbs.gfycat.com/SpecificTameAustralianfurseal-max-1mb.gif */
+  /*  */
+  background-size: 220%;
+  background-position: center 47%;
   background-color: var(--red);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
@@ -315,7 +323,8 @@ label[for="guide"] {
 .square.obstacle {
   background-color: var(--dark-blue2);
   background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
-  background-size: cover;
+  background-size: 150%;
+  background-position: center 35%;
   cursor: not-allowed;
 }
 
