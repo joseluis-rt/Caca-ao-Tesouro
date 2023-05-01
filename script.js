@@ -252,12 +252,8 @@ function depth_first_search(start, end) {
 //function dijkstra(start, end) {}
 
 function restart_obstacles() {
-<<<<<<< Updated upstream
-=======
-
   restart.play(); //plays restart effect
 
->>>>>>> Stashed changes
   let obstacles = document.querySelectorAll(".obstacle");
 
   for (let obstacle of obstacles) {
@@ -271,7 +267,6 @@ function restart_obstacles() {
       elem.classList.remove("end");
     }
   }
-<<<<<<< Updated upstream
 
   // reset grid_matrix to an empty array
   grid_matrix = [];
@@ -279,15 +274,12 @@ function restart_obstacles() {
     grid.removeChild(grid.firstChild);
   }
 
-=======
-
   // reset grid_matrix to an empty array
   grid_matrix = [];
   while (grid.firstChild) {
     grid.removeChild(grid.firstChild);
   }
 
->>>>>>> Stashed changes
   // redraw the grid and add new obstacles
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
