@@ -235,19 +235,30 @@ function depth_first_search(start, end) {
 //function dijkstra(start, end) {}
 
 function restart_obstacles() {
-  // Remove all obstacles
   let obstacles = document.querySelectorAll(".obstacle");
+
   for (let obstacle of obstacles) {
     obstacle.classList.remove("obstacle");
   }
 
-  startNode.classList.remove("start");
-  endNode.classList.remove("end");
-  endNode.classList.remove("end2");
-  clear_path();
+  // remove "start" and "end" classes from grid_matrix
+  for (let row of grid_matrix) {
+    for (let elem of row) {
+      elem.classList.remove("start");
+      elem.classList.remove("end");
+    }
+  }
 
-  // Add new obstacles
+  // reset grid_matrix to an empty array
+  grid_matrix = [];
+  while (grid.firstChild) {
+    grid.removeChild(grid.firstChild);
+  }
+
+  // redraw the grid and add new obstacles
+  draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
+  clear_path();
 }
 
 function update_obstacles() {
