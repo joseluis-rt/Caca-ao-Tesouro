@@ -60,7 +60,8 @@ body {
 }
 
 .title {
-  min-width: 300;
+  font-size: 24px;
+  min-width: var(--min-width);
   max-width: var(----max-width);
   height: 150px;
   border: 0px;
@@ -71,13 +72,13 @@ body {
   align-items: center;
 
   color: var(--light-beige);
-  font-size: 55px;
+  font-size: 59px;
   text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.6);
   -webkit-text-stroke: 1.7px var(--dark-brown);
   background-image: url("https://talenthouse-res.cloudinary.com/image/upload/c_limit,h_1000,w_1000/v1/user-549495/submissions/rzyjnknkdoob1wcmadks.gif");
   background-size: cover;
 
-  padding: 40px 0px;
+  padding: 50px 19px;
   display: inline-block;
   margin: -20px;
   height: 100px;
@@ -90,7 +91,7 @@ h1 span {
 
 .main {
   overflow: hidden;
-  min-width: 360px;
+  min-width: 460px;
   max-width: var(----max-width);
   display: flex;
   flex-wrap: wrap;
@@ -99,7 +100,7 @@ h1 span {
 
   background-color: var(--light-blue);
 
-  margin-top: -40px;
+  margin-top: 40px;
   text-align: center;
 
   background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5b404798-f375-43e8-a53b-2b72c1b2ea0f/dacq5dm-61fc574b-1853-4655-9a85-66d8f0774457.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzViNDA0Nzk4LWYzNzUtNDNlOC1hNTNiLTJiNzJjMWIyZWEwZlwvZGFjcTVkbS02MWZjNTc0Yi0xODUzLTQ2NTUtOWE4NS02NmQ4ZjA3NzQ0NTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DTlW335Num54BwVaCnTIFkHntdQOUoZxd7v-m24FFXo");
@@ -143,8 +144,7 @@ h1 span {
 .item {
   font-size: 19px;
   overflow: hidden;
-  width: 20%;
-  min-width: 140px;
+  width: 180px;
   margin: 5px;
   border: 4px solid var(--dark-brown);
   border-radius: 30px;
@@ -158,9 +158,8 @@ h1 span {
 
 .custom-btn {
   width: 100%;
-  
   color: var(--dark-brown);
-  padding: 10px 0px;
+  padding: 10px 25px;
   font-family: "Lobster", cursive;
   font-weight: 100;
   font-size: 20px;
@@ -225,7 +224,6 @@ label[for="guide"] {
   margin-right: 15px;
   background-image: url("assets/paper.png");
   background-size: cover;
-  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.5);
 }
 
 .grid {
@@ -239,7 +237,7 @@ label[for="guide"] {
 }
 
 .footer {
-  min-width: 352px;
+  min-width: 452px;
   max-width: 100%;
 
   margin-top: -40px;
@@ -306,9 +304,8 @@ label[for="guide"] {
 }
 
 .square.end2 {
-  background-image: url("https://thumbs.gfycat.com/SpecificTameAustralianfurseal-max-1mb.gif");
-  background-size: 130%;
-  background-position: center;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
+  background-size: cover;
   background-color: var(--red);
   transform: scale(1.3);
   border: 1px solid var(--dark-blue1);
@@ -318,8 +315,7 @@ label[for="guide"] {
 .square.obstacle {
   background-color: var(--dark-blue2);
   background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
-  background-size: 150%;
-  background-position: center;
+  background-size: cover;
   cursor: not-allowed;
 }
 

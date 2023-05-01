@@ -13,6 +13,19 @@ const pirate_music = new Audio("assets/pirate_music.mp3"); //music
 pirate_music.loop = true;
 pirate_music.volume = 0.3;
 
+let restart = new Audio("assets/restart.mp3");
+restart.volume = 0.5;
+
+let change_grid = new Audio("assets/change_grid.mp3");
+change_grid.volume = 0.5;
+
+let chest = new Audio("assets/chest.mp3");
+
+let chest_error = new Audio("assets/chest_error.mp3");
+
+let ship = new Audio("assets/ship.mp3");
+
+
 function init() {
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
@@ -102,14 +115,17 @@ function square_click(event) {
   }
 
   if (startNode === null) {
+    ship.play();
     startNode = elem;
     elem.classList.add("start");
   } else if (endNode === null) {
     endNode = elem;
 
     if (draw_path() == false) {
+      chest_error.play();
       elem.classList.add("end2");
     } else {
+      chest.play();
       elem.classList.add("end");
       draw_path();
     }
@@ -120,6 +136,7 @@ function square_click(event) {
     startNode = elem;
     endNode = null;
     startNode.classList.add("start");
+    ship.play();
     clear_path();
   }
 }
@@ -235,6 +252,12 @@ function depth_first_search(start, end) {
 //function dijkstra(start, end) {}
 
 function restart_obstacles() {
+<<<<<<< Updated upstream
+=======
+
+  restart.play(); //plays restart effect
+
+>>>>>>> Stashed changes
   let obstacles = document.querySelectorAll(".obstacle");
 
   for (let obstacle of obstacles) {
@@ -248,6 +271,7 @@ function restart_obstacles() {
       elem.classList.remove("end");
     }
   }
+<<<<<<< Updated upstream
 
   // reset grid_matrix to an empty array
   grid_matrix = [];
@@ -255,6 +279,15 @@ function restart_obstacles() {
     grid.removeChild(grid.firstChild);
   }
 
+=======
+
+  // reset grid_matrix to an empty array
+  grid_matrix = [];
+  while (grid.firstChild) {
+    grid.removeChild(grid.firstChild);
+  }
+
+>>>>>>> Stashed changes
   // redraw the grid and add new obstacles
   draw_grid(grid_size_x, grid_size_y);
   add_obstacles(num_obstacle);
@@ -277,6 +310,8 @@ function update_obstacles() {
 }
 
 function change_grid_size() {
+  change_grid.play();
+
   let grid_size_x_input = document.getElementById("grid-size-x");
   let grid_size_y_input = document.getElementById("grid-size-y");
 
